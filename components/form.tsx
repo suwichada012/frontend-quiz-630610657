@@ -24,18 +24,17 @@ const schema = z.object({
   ),
 });
 
-
-export function getInitData(blank = false): Form {
-  if (blank) {
-    return {
-      firstName: "",
-      lastName: "",
-      email: "",
-      dateOfBirth: "",
-      password: "",
-      confirmPassword: "",
-    };
-  }
+// export function getInitData(blank = false) {
+//   if (blank) {
+//     return {
+//       firstName: "",
+//       lastName: "",
+//       email: "",
+//       dateOfBirth: "",
+//       password: "",
+//       confirmPassword: "",
+//     };
+//   }
 
 export default function DonationForm() {
   const form = useForm({
@@ -48,16 +47,6 @@ export default function DonationForm() {
     validate: zodResolver(schema),
   });
 
- 
-  const { errors, isSubmitting, isValid } = form;
-
-
-    if (form && !form) {
-      alert("Form submitted successfully!");
-
-    }
-
-
   return (
     <Card withBorder shadow="xs" p="xl" bg="cyan.2">
       <Title order={1} color="blue">
@@ -68,8 +57,7 @@ export default function DonationForm() {
         <Stack spacing="xs">
           <Input.Wrapper>
             <Input.Label>First Name</Input.Label>
-            <TextInput {...form.getInputProps("firstName")} 
-            disabled={isSubmitting}/>
+            <TextInput {...form.getInputProps("firstName")} />
             {form.errors.firstName && (
               <Input.Error>
                 First Name is required and must be at least 3 characters.
@@ -79,8 +67,7 @@ export default function DonationForm() {
 
           <Input.Wrapper>
             <Input.Label>Last Name</Input.Label>
-            <TextInput {...form.getInputProps("lastName")} 
-            disabled={isSubmitting}/>
+            <TextInput {...form.getInputProps("lastName")} />
             {form.errors.lastName && (
               <Input.Error>
                 Last Name is required and must be at least 3 characters.
@@ -90,7 +77,7 @@ export default function DonationForm() {
 
           <Input.Wrapper>
             <Input.Label>Email</Input.Label>
-            <TextInput {...form.getInputProps("email")} disabled={isSubmitting}/>
+            <TextInput {...form.getInputProps("email")} />
             {form.errors.email && (
               <Input.Error>Invalid email format</Input.Error>
             )}
@@ -98,7 +85,7 @@ export default function DonationForm() {
 
           <Input.Wrapper>
             <Input.Label>Donation Amount</Input.Label>
-            <TextInput {...form.getInputProps("amount")} disabled={isSubmitting}/>
+            <TextInput {...form.getInputProps("amount")} />
             {form.errors.amount && (
               <Input.Error>
                 Invalid donation amount. It must be a number greater than or
@@ -106,9 +93,7 @@ export default function DonationForm() {
               </Input.Error>
             )}
           </Input.Wrapper>
-          <Button type="submit" disabled={isSubmitting}>
-            Submit
-          </Button>
+          <Button type="submit">Submit</Button>
         </Stack>
       </form>
     </Card>

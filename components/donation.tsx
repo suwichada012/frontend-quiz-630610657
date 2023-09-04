@@ -1,5 +1,5 @@
-// import { API_URL } from "../utils/api";
-// import { type Donation } from "@/utils/types";
+import { API_URL } from "../utils/api";
+import { type Donation } from "@/utils/types";
 import { Paper, Text, Stack, Group, Title, Card } from "@mantine/core";
 import dayjs from "dayjs";
 
